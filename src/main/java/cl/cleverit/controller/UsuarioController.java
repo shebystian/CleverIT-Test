@@ -1,21 +1,41 @@
 package cl.cleverit.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.cleverit.model.dataAccess.UsuarioDataAccess;
 import cl.cleverit.model.entities.Usuario;
+import cl.cleverit.service.UsuarioService;
 
 @RestController
 public class UsuarioController {
 	
-	@Autowired UsuarioDataAccess usuarioDA;
+	
+	@Autowired UsuarioService usuarioService;
 	
 	@GetMapping("/usuario/{id}")
 	public Usuario getUsuario(@PathVariable int id) {
-		return usuarioDA.getUsuarioById(id);
+		return usuarioService.getUsuario(id);
+	}
+	
+	@PostMapping("/usuario/")
+	public boolean saveUsuario(@RequestBody Usuario usuario) {
+		return usuarioService.saveUsuario(usuario);
+	}
+	
+	@DeleteMapping("/usuario/{id}")
+	public boolean deleteUsuario(@PathVariable int id) {
+		return usuarioService.deleteUsuario(id);
+	}
+	
+	@PutMapping("/usuario/")
+	public Usuario updateUsuario(@RequestBody Usuario usuario) {
+		return usuarioService.updateUsuario(usuario);
 	}
 
 }

@@ -3,18 +3,36 @@ package cl.cleverit.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import cl.cleverit.controller.UsuarioController;
+import cl.cleverit.model.dataAccess.UsuarioDataAccess;
 import cl.cleverit.model.entities.Usuario;
 
 @Service
 public class UsuarioService implements IUsuarioService {
 	
-	@Autowired UsuarioController usuarioController;
+
+	@Autowired UsuarioDataAccess usuarioDA;
 
 	@Override
 	public Usuario getUsuario(int id) {
 		
-		return usuarioController.getUsuario(id);
+		return usuarioDA.getUsuarioById(id);
+	}
+
+	@Override
+	public boolean saveUsuario(Usuario usuario) {
+		
+		return usuarioDA.saveUsuario(usuario);
+	}
+
+	@Override
+	public boolean deleteUsuario(int id) {
+		
+		return usuarioDA.deleteUsuario(id);
+	}
+
+	@Override
+	public Usuario updateUsuario(Usuario usuario) {
+		return usuarioDA.updateUsuario(usuario);
 	}
 
 	
