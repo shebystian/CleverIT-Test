@@ -13,7 +13,7 @@ public class UsuarioService implements IUsuarioService {
 	@Autowired UsuarioDataAccess usuarioDA;
 
 	@Override
-	public Usuario getUsuario(int id) {
+	public Usuario getUsuario(int id) throws Exception {
 		
 		return usuarioDA.getUsuarioById(id);
 	}

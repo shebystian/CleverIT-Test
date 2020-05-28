@@ -19,7 +19,7 @@ public class UsuarioController {
 	@Autowired UsuarioService usuarioService;
 	
 	@GetMapping("/usuario/{id}")
-	public Usuario getUsuario(@PathVariable int id) {
+	public Usuario getUsuario(@PathVariable int id) throws Exception {
 		return usuarioService.getUsuario(id);
 	}
 	
