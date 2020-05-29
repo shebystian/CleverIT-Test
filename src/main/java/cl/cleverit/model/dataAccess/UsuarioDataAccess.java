@@ -1,66 +1,58 @@
 package cl.cleverit.model.dataAccess;
 
-import java.util.List;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import cl.cleverit.model.entities.Usuario;
-import cl.cleverit.service.CleverClient;
+import cl.cleverit.client.CleverClient;
+import cl.cleverit.model.dto.Usuario;
 
 @Component
 public class UsuarioDataAccess {
 	
-	@Autowired CleverClient cclient;
+	@Autowired CleverClient cClient;
 	
 	@Autowired ObjectMapper objectMapper;
 
-	public static final String BASE_URL = "http://arsene.azurewebsites.net";
 	
-	
-	@SuppressWarnings({ "unchecked" })
-	public Usuario getUsuarioById(int id) throws Exception {
-		String assembledPath = "/User";
-        CleverClient cclient = new CleverClient();
-        String response = cclient.getClient(BASE_URL+assembledPath);
-        Gson gson =new Gson();
-        List<Object> user = (List<Object>) (gson.fromJson(response, Object.class));
-		Usuario us = new Usuario();
-		
-		// quede pegado aca
-		
-		return  us;
+	public Usuario getUsuarioById(int id) {
+		try {
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+			
+		}
+		return  null;
 	}
 	
-	@SuppressWarnings("null")
-	public String getListaUsuarios() throws Exception {
-		String assembledPath = "/User";
-        CleverClient cclient = new CleverClient();
-        String response = cclient.getClient(BASE_URL.concat(assembledPath));
-        Gson gson =new Gson();
-        @SuppressWarnings("unchecked")
-		List<Object> user = (List<Object>) (gson.fromJson(response, Object.class));
-		
-		List<Usuario> usuarioList = null;
-		/*
-		for(Object objUser : user.toArray())
-		{
-			Usuario u = (Usuario)objUser;
+	public ArrayList<Usuario> getUsuarios() {
+		Gson gson = new Gson();
+		try {
+			String cadenaConLosUsuarios = cClient.getClientUsuarios();
+			System.out.println(cadenaConLosUsuarios);
+			ArrayList<Usuario> usuarios = null;
+			Type listType = new TypeToken<ArrayList<Usuario>>(){}.getType();
+			try {
+				usuarios = gson.fromJson(cadenaConLosUsuarios, listType);
+				if(usuarios != null && usuarios.size() > 0) {
+					return usuarios;
+				}	
+			}catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
 			
-			Usuario us = new Usuario();
-			us.setId(u.getId());
-			us.setNombre(u.getNombre());
-			us.setApellido(u.getApellido());
-			us.setEmail(u.getEmail());
-			us.setProfesion(u.getProfesion());
-			
-			usuarioList.add(us);
 		}
-		*/
-		return  response;
+		return  new ArrayList<Usuario>(0);
 	}
 	
 	public boolean saveUsuario(Usuario usuario) {

@@ -1,10 +1,13 @@
 package cl.cleverit.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import cl.cleverit.model.dataAccess.UsuarioDataAccess;
-import cl.cleverit.model.entities.Usuario;
+import cl.cleverit.model.dto.Usuario;
+import cl.cleverit.repository.IUsuarioService;
 
 @Service
 public class UsuarioService implements IUsuarioService {
@@ -36,8 +39,8 @@ public class UsuarioService implements IUsuarioService {
 	}
 
 	@Override
-	public String getListaUsuario() throws Exception {
-		return usuarioDA.getListaUsuarios();
+	public ArrayList<Usuario> getListaUsuario() {
+		return usuarioDA.getUsuarios();
 	}
 
 }

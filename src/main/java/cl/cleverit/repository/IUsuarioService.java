@@ -1,6 +1,8 @@
-package cl.cleverit.service;
+package cl.cleverit.repository;
 
-import cl.cleverit.model.entities.Usuario;
+import java.util.ArrayList;
+
+import cl.cleverit.model.dto.Usuario;
 
 public interface IUsuarioService {
 
@@ -12,6 +14,6 @@ public interface IUsuarioService {
 	
 	Usuario updateUsuario(Usuario usuario);
 
-	String getListaUsuario() throws Exception;
+	ArrayList<Usuario> getListaUsuario() throws Exception;
 
 }

@@ -1,37 +1,28 @@
-package cl.cleverit.model.entities;
+package cl.cleverit.model.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name="usuario")
-public class Usuario {
-		
-	@Id
-	private String id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+
+public class Usuario implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4781307382045054021L;
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
 	
+	private String id;
 	private String nombre;
 	private String apellido;
 	private String profesion;
 	private String email;
-	public Usuario(String id, String nombre, String apellido, String profesion, String email) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.profesion = profesion;
-		this.email = email;
-	}
-	public Usuario() {
-		super();
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -43,6 +34,10 @@ public class Usuario {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	public String getProfesion() {
 		return profesion;
@@ -56,5 +51,12 @@ public class Usuario {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-		
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+
 }

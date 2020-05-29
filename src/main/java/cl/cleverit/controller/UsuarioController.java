@@ -1,5 +1,7 @@
 package cl.cleverit.controller;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cl.cleverit.model.entities.Usuario;
+import cl.cleverit.model.dto.Usuario;
 import cl.cleverit.service.UsuarioService;
 
 @RestController
@@ -24,7 +26,7 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/usuario/")
-	public String getListaUsuario() throws Exception {
+	public ArrayList<Usuario> getListaUsuario() throws Exception {
 		return usuarioService.getListaUsuario();
 	}
 	

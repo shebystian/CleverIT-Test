@@ -6,9 +6,16 @@
 </head>
 <body>
 	<h1><span th:text="${usuariosTitle}"></span></h1>
-	<ul>
-	<li><span th:text="${usuarios}"></span>
-	</li>
-	</ul>
+	<form action="#" th:action="@{/query/submitQuery}" th:object="${usuarios}" method="get">
+		 <table class="table table-bordered table-hover table-striped">
+			<tbody>
+				 <tr th:each="listausuarios, stat : ${usuarios}">   
+			         <td th:text="${listausuarios.getId()}" ></td>
+			         <td th:text="${listausuarios.getNombre()}"></td>
+			         <td th:text="${listausuarios.getApellido()}" ></td>
+			      </tr>
+		      </tbody>
+	     </table>
+	 </form>
 </body>
 </html>
