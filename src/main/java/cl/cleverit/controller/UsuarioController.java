@@ -23,6 +23,11 @@ public class UsuarioController {
 		return usuarioService.getUsuario(id);
 	}
 	
+	@GetMapping("/usuario/")
+	public String getListaUsuario() throws Exception {
+		return usuarioService.getListaUsuario();
+	}
+	
 	@PostMapping("/usuario/")
 	public boolean saveUsuario(@RequestBody Usuario usuario) {
 		return usuarioService.saveUsuario(usuario);

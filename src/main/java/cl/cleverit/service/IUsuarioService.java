@@ -12,4 +12,6 @@ public interface IUsuarioService {
 	
 	Usuario updateUsuario(Usuario usuario);
 
+	String getListaUsuario() throws Exception;
+
 }

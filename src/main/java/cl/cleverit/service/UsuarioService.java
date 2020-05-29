@@ -35,6 +35,9 @@ public class UsuarioService implements IUsuarioService {
 		return usuarioDA.updateUsuario(usuario);
 	}
 
-	
+	@Override
+	public String getListaUsuario() throws Exception {
+		return usuarioDA.getListaUsuarios();
+	}
 
 }

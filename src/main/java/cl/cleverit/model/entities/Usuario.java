@@ -38,7 +38,6 @@ public class Usuario implements Serializable{
 		this.apellido = apellido;
 	}
 	
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
