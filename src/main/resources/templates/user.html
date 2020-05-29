@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html lang ="es" xmlns:th="http://thymeleaf.org">
 <head>
+	<style type="text/css">
+		.par{
+			background-color:yellow;
+		}
+		
+		.impar{
+			background-color: silver;
+		}
+	</style>
+</head>
 <meta charset="UTF-8">
 <title>Usuarios</title>
 </head>
 <body>
 	<h1><span th:text="${usuariosTitle}"></span></h1>
-	<form action="#" th:action="@{/query/submitQuery}" th:object="${usuarios}" method="get">
+	<form action="#" th:action="@{/user/new}" th:object="${usuarios}" method="POST">
+	
 		 <table class="table table-bordered table-hover table-striped">
 			<tbody>
-				 <tr th:each="listausuarios, stat : ${usuarios}">   
-			         <td th:text="${listausuarios.getId()}" ></td>
-			         <td th:text="${listausuarios.getNombre()}"></td>
-			         <td th:text="${listausuarios.getApellido()}" ></td>
+				 <tr th:each="usuario, stat : ${usuarios}" th:class="${usuarios}?'impar':'par'">   
+			         <td th:text="${usuario.getId()}" ></td>
+			         <td th:text="${usuario.getNombre()}"></td>
+			         <td th:text="${usuario.getApellido()}" ></td>
 			      </tr>
 		      </tbody>
 	     </table>
+	     
+	     <input type="submit" value="agregar usuario"/>
+	    
 	 </form>
 </body>
 </html>

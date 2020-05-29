@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import cl.cleverit.model.dto.Usuario;
 
@@ -30,6 +31,19 @@ public class MainController {
 		
 		return "user";
 	 }
-
+	
+	@PostMapping("/user/new")
+	public String newUser(Model model) {
+		
+		model.addAttribute("mensaje","Hola, aca se puede agregar usuario");
+		return "new";
+	 }
+	
+	@PostMapping("/user/")
+	public String addNewUser(Model model) {
+		
+		model.addAttribute("mensaje","Hola, aca se puede agregar usuario");
+		return "new";
+	 }
 }
 
