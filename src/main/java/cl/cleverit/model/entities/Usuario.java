@@ -1,8 +1,6 @@
 package cl.cleverit.model.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
